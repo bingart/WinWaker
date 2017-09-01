@@ -44,3 +44,5 @@
 *.db
 *.opendb
 
+DEBUG
+.vs

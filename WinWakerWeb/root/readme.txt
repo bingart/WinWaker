@@ -1,0 +1,1 @@
+The index.htm and domain.js are solution for multiple website within one webhost.

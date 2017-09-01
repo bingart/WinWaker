@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="res\MouseActive.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\MouseDeactive.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\MouseClose.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\MouseConfig.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\Splash.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\gif1.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\gif1.gif">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bitmap2.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bitmap1.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="WinWaker.nsi" />
+    <None Include="WinWakerStr.txt" />
+    <None Include="WinWaker.License.txt" />
+    <None Include="WinWaker.ReadMe.txt" />
+    <None Include="res\WinWaker.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\WinWaker.gif">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\WinWaker.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemTray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BtnST.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MySystemTray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AboutDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WorkConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WorkLog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WorkReg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SplashDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PictureEx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DaemonDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TipDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WinWaker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WinWakerTask.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WinWakerDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WinWakerDragDrop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WinWakerLib\argument.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WinWakerLib\codec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WinWakerLib\easylog.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WinWakerLib\file.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WinWakerLib\http.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WinWakerLib\key.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WinWakerLib\libstr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WinWakerLib\run.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WinWakerLib\scrambler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WinWakerLib\str.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemTray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BtnST.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MySystemTray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AboutDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WorkConfig.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WorkLog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WorkReg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SplashDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PictureEx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DaemonDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TipDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinWakerTask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinWaker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinWakerDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinWakerDragDrop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WinWakerLib\argument.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WinWakerLib\base64.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WinWakerLib\codec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WinWakerLib\easylog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WinWakerLib\file.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WinWakerLib\http.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WinWakerLib\libstr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WinWakerLib\run.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WinWakerLib\str.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinWakerStr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WinWaker.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

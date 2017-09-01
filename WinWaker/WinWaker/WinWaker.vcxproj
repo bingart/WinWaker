@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{91DAE93D-7E96-4C7C-9243-072D6285E217}</ProjectGuid>
+    <RootNamespace>WinWaker</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>WinWaker</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>WinWaker</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>WinWaker</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\WinWakerLib</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <UACExecutionLevel>AsInvoker</UACExecutionLevel>
+      <AdditionalDependencies>nafxcwd.lib;libcmtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>nafxcwd.lib;libcmtd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>copy WinWaker.nsi ..\Debug\WinWaker.nsi /Y
+copy WinWaker.ReadMe.txt ..\Debug\WinWaker.ReadMe.txt /Y
+copy WinWaker.License.txt ..\Debug\WinWaker.License.txt /Y
+copy res\MouseActive.ico ..\Debug\WinWaker.ico /Y
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\WinWakerLib</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <UACExecutionLevel>AsInvoker</UACExecutionLevel>
+      <IgnoreSpecificDefaultLibraries>nafxcw.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <AdditionalDependencies>nafxcw.lib;libcmt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PostBuildEvent>
+      <Command>copy WinWaker.nsi ..\Release\WinWaker.nsi /Y
+copy WinWakerReadMe.txt ..\Release\WinWaker.ReadMe.txt /Y
+copy WinWakerLicense.txt ..\Release\WinWaker.License.txt /Y
+copy res\MouseActive.ico ..\Release\WinWaker.ico /Y
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="WinWaker.nsi" />
+    <None Include="WinWaker.License.txt" />
+    <None Include="WinWaker.ReadMe.txt" />
+    <None Include="WinWakerStr.txt" />
+    <None Include="ReadMe.txt" />
+    <None Include="res\WinWaker.gif" />
+    <None Include="res\WinWaker.ico" />
+    <None Include="res\WinWaker.rc2" />
+    <None Include="res\bitmap1.bmp" />
+    <None Include="res\bitmap2.bmp" />
+    <None Include="res\gif1.bin" />
+    <None Include="res\gif1.gif" />
+    <None Include="res\MouseActive.ico" />
+    <None Include="res\MouseClose.ico" />
+    <None Include="res\MouseConfig.ico" />
+    <None Include="res\MouseDeactive.ico" />
+    <None Include="res\Splash.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\WinWakerLib\argument.h" />
+    <ClInclude Include="..\WinWakerLib\codec.h" />
+    <ClInclude Include="..\WinWakerLib\easylog.hpp" />
+    <ClInclude Include="..\WinWakerLib\file.h" />
+    <ClInclude Include="..\WinWakerLib\http.h" />
+    <ClInclude Include="..\WinWakerLib\key.h" />
+    <ClInclude Include="..\WinWakerLib\libstr.h" />
+    <ClInclude Include="..\WinWakerLib\run.h" />
+    <ClInclude Include="..\WinWakerLib\scrambler.h" />
+    <ClInclude Include="..\WinWakerLib\str.h" />
+    <ClInclude Include="AboutDlg.h" />
+    <ClInclude Include="WinWakerDragDrop.h" />
+    <ClInclude Include="WinWaker.h" />
+    <ClInclude Include="WinWakerDlg.h" />
+    <ClInclude Include="WinWakerTask.h" />
+    <ClInclude Include="BtnST.h" />
+    <ClInclude Include="ConfigDlg.h" />
+    <ClInclude Include="DaemonDlg.h" />
+    <ClInclude Include="Interface.h" />
+    <ClInclude Include="MySystemTray.h" />
+    <ClInclude Include="PictureEx.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="SplashDlg.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="SystemTray.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="TipDlg.h" />
+    <ClInclude Include="WorkConfig.h" />
+    <ClInclude Include="WorkLog.h" />
+    <ClInclude Include="WorkReg.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\WinWakerLib\argument.cpp" />
+    <ClCompile Include="..\WinWakerLib\base64.cpp" />
+    <ClCompile Include="..\WinWakerLib\codec.cpp" />
+    <ClCompile Include="..\WinWakerLib\easylog.cpp" />
+    <ClCompile Include="..\WinWakerLib\file.cpp" />
+    <ClCompile Include="..\WinWakerLib\http.cpp" />
+    <ClCompile Include="..\WinWakerLib\libstr.cpp" />
+    <ClCompile Include="..\WinWakerLib\run.cpp" />
+    <ClCompile Include="..\WinWakerLib\str.cpp" />
+    <ClCompile Include="AboutDlg.cpp" />
+    <ClCompile Include="WinWakerDragDrop.cpp" />
+    <ClCompile Include="WinWaker.cpp" />
+    <ClCompile Include="WinWakerDlg.cpp" />
+    <ClCompile Include="WinWakerStr.cpp" />
+    <ClCompile Include="WinWakerTask.cpp" />
+    <ClCompile Include="BtnST.cpp" />
+    <ClCompile Include="ConfigDlg.cpp" />
+    <ClCompile Include="DaemonDlg.cpp" />
+    <ClCompile Include="MySystemTray.cpp" />
+    <ClCompile Include="PictureEx.cpp" />
+    <ClCompile Include="SplashDlg.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="SystemTray.cpp" />
+    <ClCompile Include="TipDlg.cpp" />
+    <ClCompile Include="WorkConfig.cpp" />
+    <ClCompile Include="WorkLog.cpp" />
+    <ClCompile Include="WorkReg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WinWaker.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="WinWaker.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

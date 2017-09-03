@@ -1,4 +1,4 @@
-// AdMouseUpdate
+// WinWakerpdate
 120@WinWakerUpdate
 121@http://www.winwaker.org/data/db/report_bug.php?v=0
 

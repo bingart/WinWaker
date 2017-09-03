@@ -40,10 +40,15 @@ BOOL CSplashDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
+	// Center window
+	int scrWidth = GetSystemMetrics(SM_CXSCREEN);
+	int scrHeight = GetSystemMetrics(SM_CYSCREEN);
+	this->SetWindowPos(NULL, (scrWidth - 422)/2, (scrHeight - 99)/2, 422, 99, SWP_SHOWWINDOW);
+
 	// TODO:  Add extra initialization here
 	SetBackgroundColor(RGB(212, 208, 200));
 	SetBackgroundImage(IDB_BITMAP1);
-
+	
 	RECT rect;
 	GetClientRect(&rect);
 	int y = (rect.bottom - 87)/2;

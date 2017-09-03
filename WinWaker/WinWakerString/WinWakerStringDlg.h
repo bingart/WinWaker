@@ -39,6 +39,7 @@ public:
 	CListBox m_ListBoxLog;
 	CButton m_ButtonWinWakerLib;
 	CButton m_ButtonWinWaker;
+	CButton m_ButtonWinWakerUpdate;
 	afx_msg void OnBnClickedButtonSelectAll();
 	afx_msg void OnBnClickedButtonClearAll();
 };

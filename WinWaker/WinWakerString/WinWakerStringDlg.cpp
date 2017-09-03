@@ -34,6 +34,7 @@ void CWinWakerStringDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_LIST1, m_ListBoxLog);
 	DDX_Control(pDX, IDC_CHECK_WINWAKER_LIB, m_ButtonWinWakerLib);
 	DDX_Control(pDX, IDC_CHECK_WINWAKER, m_ButtonWinWaker);
+	DDX_Control(pDX, IDC_CHECK_WINWAKERUPDATE, m_ButtonWinWakerUpdate);
 }
 
 BEGIN_MESSAGE_MAP(CWinWakerStringDlg, CDialogEx)
@@ -163,6 +164,19 @@ void CWinWakerStringDlg::OnBnClickedButtonConvert()
 			m_ListBoxLog.AddString("Convert ..\\WinWaker\\WinWakerStr.txt fails");
 		}
 	}
+
+	if (m_ButtonWinWakerUpdate.GetCheck())
+	{
+		BOOL rc = convert.Convert("..\\WinWakerUpdate\\WinWakerUpdateStr.txt", "..\\WinWakerUpdate\\WinWakerUpdateStr.cpp", false);
+		if (rc)
+		{
+			m_ListBoxLog.AddString("Convert ..\\WinWakerUpdate\\WinWakerUpdateStr.txt ok");
+		}
+		else
+		{
+			m_ListBoxLog.AddString("Convert ..\\WinWakerUpdate\\WinWakerUpdateStr.txt fails");
+		}
+	}
 }
 
 
@@ -170,6 +184,7 @@ void CWinWakerStringDlg::OnBnClickedButtonSelectAll()
 {
 	m_ButtonWinWakerLib.SetCheck(TRUE);
 	m_ButtonWinWaker.SetCheck(TRUE);
+	m_ButtonWinWakerUpdate.SetCheck(TRUE);
 }
 
 
@@ -177,4 +192,5 @@ void CWinWakerStringDlg::OnBnClickedButtonClearAll()
 {
 	m_ButtonWinWakerLib.SetCheck(FALSE);
 	m_ButtonWinWaker.SetCheck(FALSE);
+	m_ButtonWinWakerUpdate.SetCheck(FALSE);
 }

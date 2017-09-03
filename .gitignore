@@ -44,5 +44,11 @@
 *.db
 *.opendb
 
-DEBUG
+# Resource
+*.res
+
+# DEBUG
+Debug/*
 .vs
+*.suo
+RC*

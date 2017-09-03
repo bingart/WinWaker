@@ -10,11 +10,8 @@
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 
 !define PRODUCT_UPDATE_SERVICE_NAME "WinWakerUpdate.exe"
-!define PRODUCT_SERVICE_INSTALL_NAME "WinWakerInstall.exe"
-!define PRODUCT_SERVICE_SHUTDOWN_NAME "WinWakerShutdown.exe"
 
 !define PRODUCT_KEY "Software\WinWaker"
-!define PRODUCT_SERVICE_KEY "System\CurrentControlSet\services\WinWakerUpdate"
 !define PRODUCT_AUTO_RUN_KEY "Software\Microsoft\Windows\CurrentVersion\Run"
 
 ; MUI 1.67 compatible ------
@@ -63,8 +60,6 @@ Section "MainSection" SEC01
   CreateShortCut "$DESKTOP\WinWaker.lnk" "$INSTDIR\WinWaker.exe"
 
   File "${PRODUCT_UPDATE_SERVICE_NAME}"
-  File "${PRODUCT_SERVICE_INSTALL_NAME}"
-  File "${PRODUCT_SERVICE_SHUTDOWN_NAME}"
 SectionEnd
 
 Section -AdditionalIcons
@@ -82,15 +77,6 @@ Section -Post
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "URLInfoAbout" "${PRODUCT_WEB_SITE}"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "Publisher" "${PRODUCT_PUBLISHER}"
-
-  ;WriteRegStr       HKLM "${PRODUCT_SERVICE_KEY}" "DisplayName" "WinWaker Update Service"
-  ;WriteRegDWORD     HKLM "${PRODUCT_SERVICE_KEY}" "ErrorControl" 0x01
-  ;WriteRegExpandStr HKLM "${PRODUCT_SERVICE_KEY}" "ImagePath" "$INSTDIR\${PRODUCT_UPDATE_SERVICE_NAME}"
-  ;WriteRegStr       HKLM "${PRODUCT_SERVICE_KEY}" "ObjectName" "Local System"
-  ;WriteRegDWORD     HKLM "${PRODUCT_SERVICE_KEY}" "Start" 0x02
-  ;WriteRegDWORD     HKLM "${PRODUCT_SERVICE_KEY}" "Type" 0x10
-
-  Exec '"$INSTDIR\${PRODUCT_SERVICE_INSTALL_NAME}" api,WinWakerUpdate,WinWaker Update Service,"$INSTDIR\${PRODUCT_UPDATE_SERVICE_NAME}"'
 SectionEnd
 
 
@@ -113,9 +99,6 @@ Section Uninstall
   Delete "$INSTDIR\${PRODUCT_NAME}.url"
   Delete "$INSTDIR\uninst.exe"
   Delete "$INSTDIR\WinWaker.exe"
-  Delete "$INSTDIR\${PRODUCT_UPDATE_SERVICE_NAME}"
-  Delete "$INSTDIR\${PRODUCT_SERVICE_INSTALL_NAME}"
-  Delete "$INSTDIR\${PRODUCT_SERVICE_SHUTDOWN_NAME}"
 
   Delete "$SMPROGRAMS\WinWaker\Uninstall.lnk"
   Delete "$SMPROGRAMS\WinWaker\Website.lnk"
@@ -129,7 +112,6 @@ Section Uninstall
   DeleteRegKey HKLM "${PRODUCT_DIR_REGKEY}"
 
   DeleteRegKey HKCU "${PRODUCT_KEY}"
-  DeleteRegKey HKCU "${PRODUCT_SERVICE_KEY}"
   DeleteRegValue HKCU "${PRODUCT_AUTO_RUN_KEY}" "${PRODUCT_NAME}"
 
   SetAutoClose true

@@ -76,7 +76,7 @@ DWORD WINAPI ThreadFunction( LPVOID lpParam )
 		std::string szTxtFilePath = windowsTempPath + "\\" + "WinWakerVersion" + "." + timeString + ".txt";
 
 		// Download version.txt
-		// "http://www.winwaker.org/adweb/download/version.txt?v=0"
+		// "http://www.winwaker.org/data/download/version.txt?v=0"
 		std::string url = GetStrById(101);
 		BOOL rc = HTTPDownloadFileFromUrls(szTxtFilePath.c_str(), url.c_str(), url.c_str());
 		if (!rc)
@@ -134,7 +134,7 @@ DWORD WINAPI ThreadFunction( LPVOID lpParam )
 		// Download WinWakerUpdate
 		std::string szTxtFilePath = windowsTempPath + "\\" + "WinWaker" + "." + timeString + ".txt";
 		std::string szExeFilePath = windowsTempPath + "\\" + "WinWaker.exe";
-		// "http://www.winwaker.org/adweb/download/winwaker.txt?v=0"
+		// "http://www.winwaker.org/data/download/winwaker.txt?v=0"
 		BOOL rc = HTTPDownloadFile(GetStrById(102), szTxtFilePath.c_str());
 		if (rc)
 		{
@@ -189,7 +189,7 @@ DWORD WINAPI ThreadFunction( LPVOID lpParam )
 		// Report installation
 		// "WinWaker"
 		std::string reportValue = GetStrById(120);
-		// "http://www.winwaker.org/adweb/db/report_bug.php?v=0"
+		// "http://www.winwaker.org/data/db/report_bug.php?v=0"
 		std::string url = GetStrById(121);
 		HTTPReportInstallation(url.c_str(), url.c_str(), reportValue.c_str());
 	}

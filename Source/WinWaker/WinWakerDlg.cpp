@@ -120,7 +120,7 @@ BOOL CWinWakerDlg::OnInitDialog()
 	m_DaemonDlg->Create(CDaemonDlg::IDD, NULL);
 	m_DaemonDlg->ShowWindow(SW_SHOW);
 
-	// Start AdMouseTask thread
+	// Start WinWakerTask
 	WinWakerTask();
 
 	return TRUE;  // return TRUE  unless you set the focus to a control

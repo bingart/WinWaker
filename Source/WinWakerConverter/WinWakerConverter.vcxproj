@@ -11,21 +11,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A508D6E6-C69B-4B4B-BDB3-D868FC33CDAC}</ProjectGuid>
+    <ProjectGuid>{3CB327CD-F7EE-4490-A884-321F07E17EDD}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>WinWakerLib</RootNamespace>
+    <RootNamespace>WinWakerConverter</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>WinWakerLib</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
@@ -40,83 +39,67 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\WinWakerLib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\WinWakerLib</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
-    <PostBuildEvent>
-      <Command>
-      </Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="adstr.txt" />
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="libstr.h" />
-    <ClInclude Include="argument.h" />
-    <ClInclude Include="base64.h" />
-    <ClInclude Include="codec.h" />
-    <ClInclude Include="easylog.hpp" />
-    <ClInclude Include="file.h" />
-    <ClInclude Include="http.h" />
-    <ClInclude Include="http2.h" />
-    <ClInclude Include="key.h" />
-    <ClInclude Include="rand.h" />
-    <ClInclude Include="reg.h" />
-    <ClInclude Include="run.h" />
-    <ClInclude Include="scrambler.h" />
+    <ClInclude Include="..\WinWakerLib\libstr.h" />
+    <ClInclude Include="..\WinWakerLib\base64.h" />
+    <ClInclude Include="..\WinWakerLib\codec.h" />
+    <ClInclude Include="..\WinWakerLib\easylog.hpp" />
+    <ClInclude Include="..\WinWakerLib\scrambler.h" />
+    <ClInclude Include="..\WinWakerLib\str.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="str.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="version.h" />
-    <ClInclude Include="win.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="libstr.cpp" />
-    <ClCompile Include="argument.cpp" />
-    <ClCompile Include="base64.cpp" />
-    <ClCompile Include="codec.cpp" />
-    <ClCompile Include="easylog.cpp" />
-    <ClCompile Include="file.cpp" />
-    <ClCompile Include="http.cpp" />
-    <ClCompile Include="http2.cpp" />
-    <ClCompile Include="rand.cpp" />
-    <ClCompile Include="reg.cpp" />
-    <ClCompile Include="run.cpp" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="str.cpp" />
-    <ClCompile Include="win.cpp" />
+    <ClCompile Include="..\WinWakerLib\libstr.cpp" />
+    <ClCompile Include="..\WinWakerLib\base64.cpp" />
+    <ClCompile Include="..\WinWakerLib\codec.cpp" />
+    <ClCompile Include="..\WinWakerLib\easylog.cpp" />
+    <ClCompile Include="..\WinWakerLib\str.cpp" />
+    <ClCompile Include="WinWakerConverter.cpp" />
+    <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

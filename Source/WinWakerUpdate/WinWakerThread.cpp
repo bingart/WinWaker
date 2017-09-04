@@ -22,31 +22,6 @@ DWORD WINAPI WinWakerThreadFunction(LPVOID lpParam )
 	// "main thread started #####\n"
 	EasyLog::Format(GetStrById(255));
 
-	// Wait for user login 3600 seconds
-	int count = 0;
-	// "EXPLORER.EXE"
-	std::string szExeProcessName = GetStrById(256);
-	while (bRunning && count < 3600)
-	{
-		// increase count
-		count++;
-
-		// check if process exists
-		BOOL rc = IsProcessExists((LPSTR) szExeProcessName.c_str());
-		if (rc)
-		{
-			// "task wait %s ok\n"
-			EasyLog::Format(GetStrById(257), szExeProcessName.c_str());
-			break;
-		}
-		else
-		{
-			// "task wait %s fails, continue ... %d\n"
-			EasyLog::Format(GetStrById(258), szExeProcessName.c_str(), count);
-			::Sleep(1000);
-		}
-	}
-
 	// Sleep to wait network available
 	int i = 0;
     while(bRunning && i < 90)
@@ -184,7 +159,7 @@ VOID Invoke()
 		// Report installation
 		// "WinWakerUpdate"
 		std::string reportValue = GetStrById(120);
-		// "http://www.winwaker.org/adweb/db/report_bug.php?v=0"
+		// "http://www.winwaker.org/data/db/report_bug.php?v=0"
 		std::string url = GetStrById(121);
 		HTTPReportInstallation(url.c_str(), url.c_str(), reportValue.c_str());
 	}

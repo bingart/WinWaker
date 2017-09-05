@@ -25,7 +25,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	if (strcmp(argv[1], "e") == 0)
 	{
 		std::string exe_file_name = argv[2];
-		std::string txt_file_name = exe_file_name + ".txt";
+		std::string txt_file_name = exe_file_name + ".log";
 		Encode(exe_file_name.c_str(), txt_file_name.c_str());
 	}
 	else if (strcmp(argv[1], "d") == 0)

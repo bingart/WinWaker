@@ -83,7 +83,7 @@ BOOL CWinWakerApp::InitInstance()
 	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
 	
 	// Open log file
-	GetWindowsTempPath();
+	GetUserTempPath();
 	GetTimeString();
 	std::string szLogFilePath = windowsTempPath + "\\" + "WinWakerLog" + "." + timeString + ".log";
 	WorkLog::SetSingleMode(szLogFilePath.c_str());

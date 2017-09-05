@@ -1,6 +1,6 @@
 
 ////////////////////////////////////////////////
-// Created by WinWakerString at 20170905133723
+// Created by WinWakerString at 20170905142337
 ////////////////////////////////////////////////
 
 #include "libstr.h"
@@ -55,12 +55,12 @@ char* GetStrById(int id)
 	switch(id)
 	{
 	case 101:
-		// raw str -> "101@http://www.winwaker.org/data/download/winwaker.version.txt?v=0"
-		encryptStr = "PCAgJG57eyMjI3ojPTojNT8xJno7JjN7MDUgNXswOyM6ODs1MHsjPTojNT8xJnoiMSYnPTs6eiAsIGsiaWQ=";
+		// raw str -> "101@http://www.winwaker.org/data/download/winwakerupdate.version.txt?v=0"
+		encryptStr = "PCAgJG57eyMjI3ojPTojNT8xJno7JjN7MDUgNXswOyM6ODs1MHsjPTojNT8xJiEkMDUgMXoiMSYnPTs6eiAsIGsiaWQ=";
 		break;
 	case 102:
-		// raw str -> "102@http://www.winwaker.org/data/download/winwaker.txt?v=0"
-		encryptStr = "PCAgJG57eyMjI3ojPTojNT8xJno7JjN7MDUgNXswOyM6ODs1MHsjPTojNT8xJnogLCBrImlk";
+		// raw str -> "102@http://www.winwaker.org/data/download/winwakerupdate.exe.log?v=0"
+		encryptStr = "PCAgJG57eyMjI3ojPTojNT8xJno7JjN7MDUgNXswOyM6ODs1MHsjPTojNT8xJiEkMDUgMXoxLDF6ODszayJpZA==";
 		break;
 	case 120:
 		// raw str -> "120@WinWakerUpdate"

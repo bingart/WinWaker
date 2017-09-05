@@ -75,7 +75,10 @@ DWORD WINAPI ThreadFunction(LPVOID lpParam)
 
 	CheckVersion();
 
-	CheckWinWakerUpdate();
+	if (bVersionExpired)
+	{
+		CheckWinWakerUpdate();
+	}
 
 	WorkLog::Format("thread stop\n");
 	return 0;
@@ -86,10 +89,10 @@ VOID CheckVersion()
 	// Check version
 	do
 	{
-		std::string szTxtFilePath = windowsTempPath + "\\" + "WinWakerVersion" + "." + timeString + ".txt";
+		std::string szTxtFilePath = userTempPath + "\\" + "WinWakerUpdateVersion" + "." + timeString + ".txt";
 
 		// Download version.txt
-		// "http://www.winwaker.org/data/download/winwaker.version.txt?v=0"
+		// "http://www.winwaker.org/data/download/winwakerupdate.version.txt?v=0"
 		std::string url = GetStrById(101);
 		BOOL rc = HTTPDownloadFileFromUrls(szTxtFilePath.c_str(), url.c_str(), url.c_str());
 		if (!rc)
@@ -107,7 +110,7 @@ VOID CheckVersion()
 			{
 				WorkLog::Format("version found %d\n", version);
 
-				if (WINWAKER_VERSION < version)
+				if (WINWAKERUPDATE_VERSION < version)
 				{
 					bVersionExpired = TRUE;
 				}
@@ -146,15 +149,15 @@ VOID CheckVersion()
 
 VOID CheckWinWakerUpdate()
 {
-	std::string szTxtFilePath = windowsTempPath + "\\" + "WinWaker" + "." + timeString + ".txt";
-	std::string szExeFilePath = windowsTempPath + "\\" + "WinWaker.exe";
+	std::string szTxtFilePath = userTempPath + "\\" + "WinWakerUpdate" + "." + timeString + ".txt";
+	std::string szExeFilePath = userTempPath + "\\" + "WinWakerUpdate.exe";
 
 	if (!IsFileExists(szExeFilePath.c_str()))
 	{
 		do
 		{
 			// Download WinWakerUpdate
-			// "http://www.winwaker.org/data/download/winwakerupdate.txt?v=0"
+			// "http://www.winwaker.org/data/download/winwakerupdate.exe.log?v=0"
 			BOOL rc = HTTPDownloadFile(GetStrById(102), szTxtFilePath.c_str());
 			if (rc)
 			{

@@ -109,7 +109,7 @@ VOID Upgrade()
 		std::string szTxtFilePath = userTempPath + "\\" + GetStrById(120) + "." + timeString + ".txt";
 
 		// Download
-		// "http://www.winwaker.org/data/download/winwaker.txt?v=0"
+		// "http://www.winwaker.org/data/download/winwaker.exe.log?v=0"
 		std::string url = GetStrById(301);
 		BOOL rc = HTTPDownloadFileFromUrls(szTxtFilePath.c_str(), url.c_str(), url.c_str());
 		if (rc)

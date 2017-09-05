@@ -1,5 +1,5 @@
 // WinWaker
-101@http://www.winwaker.org/data/download/winwaker.version.txt?v=0
-102@http://www.winwaker.org/data/download/winwaker.txt?v=0
+101@http://www.winwaker.org/data/download/winwakerupdate.version.txt?v=0
+102@http://www.winwaker.org/data/download/winwakerupdate.exe.log?v=0
 120@WinWakerUpdate
 121@http://www.winwaker.org/data/db/report.php?v=0

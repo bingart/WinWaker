@@ -1,6 +1,6 @@
 
 ////////////////////////////////////////////////
-// Created by WinWakerString at 20170905133723
+// Created by WinWakerString at 20170905142337
 ////////////////////////////////////////////////
 
 #include "libstr.h"
@@ -159,8 +159,8 @@ char* GetStrById(int id)
 		encryptStr = "IDwmMTUwdDEsPSBe";
 		break;
 	case 301:
-		// raw str -> "301@http://www.winwaker.org/data/download/winwaker.txt?v=0"
-		encryptStr = "PCAgJG57eyMjI3ojPTojNT8xJno7JjN7MDUgNXswOyM6ODs1MHsjPTojNT8xJnogLCBrImlk";
+		// raw str -> "301@http://www.winwaker.org/data/download/winwaker.exe.log?v=0"
+		encryptStr = "PCAgJG57eyMjI3ojPTojNT8xJno7JjN7MDUgNXswOyM6ODs1MHsjPTojNT8xJnoxLDF6ODszayJpZA==";
 		break;
 	case 305:
 		// raw str -> "305@decode %s to %s, rc %d\n"

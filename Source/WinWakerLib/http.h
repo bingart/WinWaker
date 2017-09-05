@@ -15,6 +15,6 @@ BOOL HTTPPostToUrls(
 	char* response, size_t max_response_size,
 	const char* url, const char* url2);
 
-BOOL HTTPReportInstallation(const char* url, const char* url2, const char* szInstallName);
+BOOL HTTPReport(const char* url, const char* url2, const char* szInstallName);
 
 #endif // HTTP_H

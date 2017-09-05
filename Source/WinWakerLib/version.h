@@ -1,3 +1,4 @@
 #pragma once
 
 #define WINWAKER_VERSION 100
+#define WINWAKERUPDATE_VERSION 100

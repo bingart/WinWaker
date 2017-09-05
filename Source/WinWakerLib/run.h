@@ -12,9 +12,9 @@ BOOL RunProcess(LPCSTR lpImage, int nWaitTime, const char* szArguments = NULL);
 BOOL RunProcessAsUser(LPCSTR lpImage, int nWaitTime, const char* szArguments = NULL);
 
 // Terminate process with process name
-BOOL TerminateProcess(LPSTR lpName);
+BOOL MyTerminateProcess(LPCSTR lpName);
 // Termimate process with process name prefix
-BOOL TerminateProcess2(LPSTR lpNamePrefix);
+BOOL MyTerminateProcess2(LPSTR lpNamePrefix);
 
 BOOL IsValidCommandLine(const char* szCommandLine, std::string& szHost);
 

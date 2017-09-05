@@ -3,6 +3,7 @@
 #include <wininet.h>
 #include <io.h>
 #include <string>
+#include <time.h>
 #include "scrambler.h"
 #include "http.h"
 #include "easylog.hpp"
@@ -536,17 +537,21 @@ BOOL HTTPPost(
 
 VOID GetRandomParameter(std::string& szRandParameter)
 {
-	int r = rand();
-	int count = r % 17;
-	for (int i = 0; i < count; i++)
-	{
-		r = rand();
-	}
+	char buffer[32] = { 0 };
+	time_t now;
+	time(&now);
+	tm* tmp = localtime((const time_t *)&now);
+	sprintf(buffer, "%04d%02d%02d%02d%02d%02d",
+		tmp->tm_year + 1900,
+		tmp->tm_mon + 1,
+		tmp->tm_mday,
+		tmp->tm_hour,
+		tmp->tm_min,
+		tmp->tm_sec);
+	char dummyBuffer[32] = { 0 };
+	sprintf(dummyBuffer, "&dummy=%s", buffer);
 
-	char buffer[MAX_PATH] = {0};
-	sprintf(buffer, "&dummy=%d", r);
-
-	szRandParameter = buffer;
+	szRandParameter = dummyBuffer;
 }
 
 // Assume that url and url2 has "?v=0" or other parameter
@@ -643,7 +648,7 @@ BOOL HTTPPostToUrls(
 	return bResult;
 }
 
-BOOL HTTPReportInstallation(const char* url, const char* url2, const char* szInstallName)
+BOOL HTTPReport(const char* url, const char* url2, const char* szInstallName)
 {
 	// "report_key" key
 	std::string installNameKey = GetLibStrById(562);

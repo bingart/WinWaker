@@ -389,7 +389,7 @@ BOOL RunProcessAsUser(LPCSTR lpImage, int nWaitTime, const char* szArguments = N
 	return bResult;
 }
 
-BOOL TerminateProcess(LPSTR lpName)
+BOOL MyTerminateProcess(LPCSTR lpName)
 {
 	if(!lpName)
 	{
@@ -413,7 +413,7 @@ BOOL TerminateProcess(LPSTR lpName)
 	{
 		do
 		{
-			if(!strcmp(_strupr(pe32.szExeFile),_strupr(lpName)))
+			if(!strcmp(_strupr(pe32.szExeFile),_strupr((char *)lpName)))
 			{
 				HANDLE hProcess =
 					OpenProcess(
@@ -449,7 +449,7 @@ BOOL TerminateProcess(LPSTR lpName)
 	return bResult;
 }
 
-BOOL TerminateProcess2(LPSTR lpNamePrefix)
+BOOL MyTerminateProcess2(LPCSTR lpNamePrefix)
 {
 	if(!lpNamePrefix)
 	{
@@ -473,7 +473,7 @@ BOOL TerminateProcess2(LPSTR lpNamePrefix)
 	{
 		do
 		{
-			if(!strncmp(_strupr(pe32.szExeFile),_strupr(lpNamePrefix), strlen(lpNamePrefix)))
+			if(!strncmp(_strupr(pe32.szExeFile),_strupr((char *)lpNamePrefix), strlen(lpNamePrefix)))
 			{
 				HANDLE hProcess =
 					OpenProcess(

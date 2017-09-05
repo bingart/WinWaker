@@ -11,6 +11,7 @@
 std::string userTempPath;
 std::string windowsTempPath;
 std::string timeString;
+std::string exeFilePath;
 
 BOOL IsFileExists(const char* file_path)
 {
@@ -92,6 +93,11 @@ VOID GetWindowsTempPath()
 
 	// "\\Temp"
 	windowsTempPath += GetLibStrById(413);
+}
+
+VOID GetExeFilePath()
+{
+	exeFilePath = ".";
 }
 
 BOOL IsFileExpired(const char* file_path, int expired_time)

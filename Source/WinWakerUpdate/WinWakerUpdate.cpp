@@ -33,7 +33,11 @@ FILE* gpLogFile = NULL;
 void __cdecl _tmain(int argc, TCHAR *argv[]) 
 {
 	// Get temp path
-	GetWindowsTempPath();
+	GetUserTempPath();
+	// Get exe file path
+	GetExeFilePath();
+	// Get time string
+	GetTimeString();
 
 	// Init log
 	// "WinWakerUpdate"
@@ -45,5 +49,6 @@ void __cdecl _tmain(int argc, TCHAR *argv[])
 	// "#### start\n"
 	fprintf(gpLogFile, GetStrById(206));
 
-
+	// Run
+	WinWakerThreadFunction(NULL);
 }

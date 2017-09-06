@@ -2,29 +2,7 @@
 120@WinWaker
 121@http://www.winwaker.org/data/db/report.php?v=0
 
-202@WinWaker Update Service
-205@Log.log
-206@#### start\n
-207@install
-208@install end\n
-209@Cannot install service, error %d\n
-210@OpenSCManager failed (%d)\n
-211@CreateService failed, error %d\n
-212@CreateService successfully\n
-213@SvcLog.log
-215@started #####\n
-216@RegisterServiceCtrlHandler fails, error %d\n
-217@RegisterServiceCtrlHandler ok\n
-218@SvcMain return\n
-219@SvcInit\n
-222@SvcInit return\n
-226@SvcCtrlHandler stop\n
-227@%s failed with %d
-
 255@main thread started #####\n
-256@EXPLORER.EXE
-257@task wait %s ok\n
-258@task wait %s fails, continue ... %d\n
 259@sleep: %d\n
 260@thread exit\n
 

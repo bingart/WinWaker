@@ -114,7 +114,7 @@ void CWinWakerStringDlg::OnBnClickedButtonEncrypt()
 	int len = m_EditSrc.GetWindowTextA(rawBuffer, sizeof rawBuffer);
 
 	// Encrypt
-	int encryptLen = EncryptString(rawBuffer, len, encryptBuffer, sizeof encryptBuffer);
+	int encryptLen = EncodeString(rawBuffer, len, encryptBuffer, sizeof encryptBuffer);
 
 	if (encryptLen > 0)
 	{
@@ -125,7 +125,7 @@ void CWinWakerStringDlg::OnBnClickedButtonEncrypt()
 	if (encryptLen > 0)
 	{
 		// Decrypt
-		int decryptLen = DecryptString(encryptBuffer, encryptLen, decryptBuffer, sizeof decryptBuffer);
+		int decryptLen = DecodeString(encryptBuffer, encryptLen, decryptBuffer, sizeof decryptBuffer);
 
 		if (decryptLen > 0)
 		{

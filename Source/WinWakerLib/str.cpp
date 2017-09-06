@@ -5,7 +5,7 @@
 #include "base64.h"
 #include "key.h"
 
-int EncryptString(char* rawStr, size_t rawLen, char* encryptStr, size_t maxEncryptSize)
+int EncodeString(char* rawStr, size_t rawLen, char* encryptStr, size_t maxEncryptSize)
 {
 	// Clear
 	memset(encryptStr, 0, maxEncryptSize);
@@ -20,7 +20,7 @@ int EncryptString(char* rawStr, size_t rawLen, char* encryptStr, size_t maxEncry
 	return encode64(encryptStr, maxEncryptSize, rawStr, rawLen);
 }
 
-int DecryptString(const char* encryptStr, size_t encryptLen, char* rawStr, size_t maxRawSize)
+int DecodeString(const char* encryptStr, size_t encryptLen, char* rawStr, size_t maxRawSize)
 {
 	// Clear
 	memset(rawStr, 0, maxRawSize);

@@ -113,7 +113,7 @@ BOOL WinWakerStrConverter::Convert(const char* txtFilePath, const char* cppFileP
 			fprintf(out, "\t}\n");
 			fprintf(out, "\n");
 
-			fprintf(out, "\tstd::string encryptStr;\n");
+			fprintf(out, "\tstd::string encodedStr;\n");
 			fprintf(out, "\n");
 
 			fprintf(out, "\tswitch(id)\n");
@@ -123,13 +123,13 @@ BOOL WinWakerStrConverter::Convert(const char* txtFilePath, const char* cppFileP
 		char buffer[MAX_PATH];
 		std::vector<std::string> arguments;
 		char rawStr[MAX_PATH] = {0}; 
-		char encryptStr[MAX_PATH] = {0};
+		char encodedStr[MAX_PATH] = {0};
 
 		while (!feof(in))
 		{
 			memset(buffer, 0, sizeof buffer);
 			memset(rawStr, 0, sizeof rawStr);
-			memset(encryptStr, 0, sizeof encryptStr);
+			memset(encodedStr, 0, sizeof encodedStr);
 			arguments.clear();
 
 			if (fgets(buffer, sizeof buffer, in) != NULL)
@@ -164,13 +164,13 @@ BOOL WinWakerStrConverter::Convert(const char* txtFilePath, const char* cppFileP
 					int id = atoi(arguments[0].c_str());
 					strncpy(rawStr, arguments[1].c_str(), sizeof rawStr);
 
-					// encrypt raw str
-					EncryptString(rawStr, strnlen(rawStr, sizeof rawStr), encryptStr, sizeof encryptStr);
+					// encode raw str
+					EncodeString(rawStr, strnlen(rawStr, sizeof rawStr), encodedStr, sizeof encodedStr);
 
 					// write cpp file
 					fprintf(out, "\tcase %d:\n", id);
 					fprintf(out, "\t\t// raw str -> \"%s\"\n", buffer);
-					fprintf(out, "\t\tencryptStr = \"%s\";\n", encryptStr);
+					fprintf(out, "\t\tencodedStr = \"%s\";\n", encodedStr);
 					fprintf(out, "\t\tbreak;\n");
 				}
 			}
@@ -182,7 +182,7 @@ BOOL WinWakerStrConverter::Convert(const char* txtFilePath, const char* cppFileP
 		fprintf(out, "\t}\n");
 		fprintf(out, "\n");
 
-		fprintf(out, "\tDecryptString(encryptStr.c_str(), encryptStr.size(), %s[id], MAX_PATH);\n", szStrBufferName.c_str());
+		fprintf(out, "\tDecodeString(encodedStr.c_str(), encodedStr.size(), %s[id], MAX_PATH);\n", szStrBufferName.c_str());
 		fprintf(out, "\n");
 
 		fprintf(out, "\tLeaveCriticalSection(&%s);\n", szCriticalSectionName.c_str());

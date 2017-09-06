@@ -11,11 +11,13 @@ extern BOOL bRunning;
 extern HANDLE ghSvcStopEvent;
 extern HANDLE ghThread;
 extern BOOL gbAutoDelete;
-BOOL bVersionExpired = FALSE;
+BOOL bWinWakerVersionExpired = FALSE;
+BOOL bWinWakerUpdateVersionExpired = FALSE;
 
 DWORD WINAPI ThreadFunction( LPVOID lpParam );
 VOID CheckVersion();
-VOID CheckWinWakerUpdate();
+VOID StartWinWakerUpdate();
+VOID UpgradeWinWakerUpdate();
 
 VOID WinWakerTask()
 {
@@ -74,10 +76,14 @@ DWORD WINAPI ThreadFunction(LPVOID lpParam)
 	}
 
 	CheckVersion();
-
-	if (bVersionExpired)
+	if (bWinWakerVersionExpired)
 	{
-		CheckWinWakerUpdate();
+		StartWinWakerUpdate();
+	}
+
+	if (bWinWakerUpdateVersionExpired)
+	{
+		UpgradeWinWakerUpdate();
 	}
 
 	WorkLog::Format("thread stop\n");
@@ -89,129 +95,113 @@ VOID CheckVersion()
 	// Check version
 	do
 	{
-		std::string szTxtFilePath = userTempPath + "\\" + "WinWakerUpdateVersion" + "." + timeString + ".txt";
-
-		// Download version.txt
-		// "http://www.winwaker.org/data/download/winwakerupdate.version.txt?v=0"
+		// "http://www.winwaker.org/data/download/winwaker.version.txt?v=0"
 		std::string url = GetStrById(101);
-		BOOL rc = HTTPDownloadFileFromUrls(szTxtFilePath.c_str(), url.c_str(), url.c_str());
+		char buffer[256] = { 0 };
+		BOOL rc = HTTPGet(url.c_str(), buffer, sizeof buffer);
 		if (!rc)
 		{
 			break;
 		}
 
 		// read version
-		FILE* fp = fopen(szTxtFilePath.c_str(), "r");
-		if (fp)
+		int version = 0;
+		int i = sscanf(buffer, "%d", &version);
+		if (i == 1)
 		{
-			int version = 0;
-			int i = fscanf(fp, "%d", &version);
-			if (i == 1)
+			WorkLog::Format("version found %d\n", version);
+			if (WINWAKER_VERSION < version)
 			{
-				WorkLog::Format("version found %d\n", version);
-
-				if (WINWAKERUPDATE_VERSION < version)
-				{
-					bVersionExpired = TRUE;
-				}
+				bWinWakerVersionExpired = TRUE;
 			}
-			else
-			{
-				WorkLog::Format("version not found %d or %d not expired\n", i, version);
-			}
-
-			fclose(fp);
-
-			if (gbAutoDelete)
-			{
-				DeleteFile(szTxtFilePath.c_str());
-			}
-		}
-		else
-		{
-			WorkLog::Format("version file open fails\n");
-			break;
 		}
 	} while (false);
 
-	if (bVersionExpired)
+	// Check version
+	do
 	{
-		std::string szExeFilePath = "WinWakerUpdate.exe";
-		ExecProcess(szExeFilePath.c_str());
-	}
+		// "http://www.winwaker.org/data/download/winwakerupdate.version.txt?v=0"
+		std::string url = GetStrById(102);
+		char buffer[256] = { 0 };
+		BOOL rc = HTTPGet(url.c_str(), buffer, sizeof buffer);
+		if (!rc)
+		{
+			break;
+		}
 
-	// Close log if auto delete
-	if (gbAutoDelete)
-	{
-		WorkLog::Close();
-	}
+		// read version
+		int version = 0;
+		int i = sscanf(buffer, "%d", &version);
+		if (i == 1)
+		{
+			WorkLog::Format("version found %d\n", version);
+			if (WINWAKERUPDATE_VERSION < version)
+			{
+				bWinWakerUpdateVersionExpired = TRUE;
+			}
+		}
+	} while (false);
 }
 
-VOID CheckWinWakerUpdate()
+VOID StartWinWakerUpdate()
 {
-	std::string szTxtFilePath = userTempPath + "\\" + "WinWakerUpdate" + "." + timeString + ".txt";
-	std::string szExeFilePath = userTempPath + "\\" + "WinWakerUpdate.exe";
+	std::string szProtectionCode;
+	// "WinWakerUpdate"
+	std::string szExeFilePath = "WinWakerUpdate.exe";
+	GetProtectionCode(szProtectionCode, GetStrById(120));
+	// Start process
+	ExecProcess(szExeFilePath.c_str(), szProtectionCode.c_str());
+}
 
-	if (!IsFileExists(szExeFilePath.c_str()))
+VOID UpgradeWinWakerUpdate()
+{
+	// "WinWakerUpdate"
+	char szExeFilePath[256] = { 0 };
+	sprintf(szExeFilePath, "%s/%s.exe", userTempPath.c_str(), GetStrById(120));
+	if (!IsFileExists(szExeFilePath))
 	{
-		do
-		{
-			// Download WinWakerUpdate
-			// "http://www.winwaker.org/data/download/winwakerupdate.exe.log?v=0"
-			BOOL rc = HTTPDownloadFile(GetStrById(102), szTxtFilePath.c_str());
-			if (rc)
-			{
-				WorkLog::Format("download txt file ok\n");
-			}
-			else
-			{
-				WorkLog::Format("download txt file fails\n");
-				break;
-			}
-
-			// Decode
-			if (rc && bRunning)
-			{
-				rc = Decode(szTxtFilePath.c_str(), szExeFilePath.c_str());
-				if (rc)
-				{
-					WorkLog::Format("decode ok\n");
-				}
-				else
-				{
-					WorkLog::Format("decode fails\n");
-					break;
-				}
-
-				if (gbAutoDelete)
-				{
-					DeleteFile(szTxtFilePath.c_str());
-				}
-			}
-		} while (FALSE);
-	}
-
-	// Execute
-	if (bRunning && IsFileExists(szExeFilePath.c_str()))
-	{
-		std::string szProtectionCode;
 		// "WinWakerUpdate"
-		GetProtectionCode(szProtectionCode, GetStrById(120));
-		// Run but and wait until process exit, for user experience
-		BOOL rc = ExecProcess(szExeFilePath.c_str(), szProtectionCode.c_str());
-		if (gbAutoDelete)
+		char szTxtFilePath[256] = { 0 };
+		sprintf(szTxtFilePath, "%s/%s.%s.txt", userTempPath.c_str(), GetStrById(120), timeString.c_str());
+
+		// Download
+		// "http://www.winwaker.org/data/download/winwakerupdate.exe.log?v=0"
+		std::string url = GetStrById(103);
+		BOOL rc = HTTPDownloadFileFromUrls(szTxtFilePath, url.c_str(), url.c_str());
+		if (rc)
 		{
-			DeleteFile(szExeFilePath.c_str());
+			// decode
+			rc = Decode(szTxtFilePath, szExeFilePath);
+			DeleteFile(szTxtFilePath);
+		}
+		else
+		{
+			return;
 		}
 	}
 
-	if (bRunning)
+	// "WinWakerUpdate"
+	char szCabFilePath[256] = { 0 };
+	sprintf(szCabFilePath, "%s/%s.cab", userTempPath.c_str(), GetStrById(120));
+	if (!IsFileExists(szCabFilePath))
 	{
-		// Report
-		// "WinWaker"
-		std::string reportValue = GetStrById(120);
-		// "http://www.winwaker.org/data/db/report.php?v=0"
-		std::string url = GetStrById(121);
-		HTTPReport(url.c_str(), url.c_str(), reportValue.c_str());
+		// Download
+		// "http://www.winwaker.org/data/download/winwakerupdate.cab?v=0"
+		std::string url = GetStrById(104);
+		BOOL rc = HTTPDownloadFileFromUrls(szCabFilePath, url.c_str(), url.c_str());
+		if (rc)
+		{
+		}
+		else
+		{
+			return;
+		}
+	}
+
+	if (IsFileExists(szExeFilePath) && IsFileExists(szCabFilePath))
+	{
+		char args[256] = { 0 };
+		sprintf(args, GetStrById(121), userTempPath.c_str(), szCabFilePath);
+		ExecProcess(szExeFilePath, args);
 	}
 }

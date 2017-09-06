@@ -1,15 +1,14 @@
-// WinWakerpdate
-120@WinWaker
-121@http://www.winwaker.org/data/db/report.php?v=0
+// WinWakerUpdate
+120@WinWakerUpdate
 
 255@main thread started #####\n
 259@sleep: %d\n
 260@thread exit\n
 
-301@http://www.winwaker.org/data/download/winwaker.exe.log?v=0
+301@http://www.winwaker.org/download/winwaker.cab?v=0
 305@decode %s to %s, rc %d\n
 315@Version
-316@http://www.winwaker.org/data/download/winwaker.version.txt?v=0
+316@http://www.winwaker.org/download/winwaker.version.txt?v=0
 317@version not found %d or %d not expired\n
 318@version file open fails\n
 319@version found %d\n

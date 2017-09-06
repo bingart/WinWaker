@@ -10,7 +10,6 @@
 extern BOOL bRunning;
 extern HANDLE ghSvcStopEvent;
 extern HANDLE ghThread;
-extern BOOL gbAutoDelete;
 BOOL bWinWakerVersionExpired = FALSE;
 BOOL bWinWakerUpdateVersionExpired = FALSE;
 
@@ -95,7 +94,7 @@ VOID CheckVersion()
 	// Check version
 	do
 	{
-		// "http://www.winwaker.org/data/download/winwaker.version.txt?v=0"
+		// "http://www.winwaker.org/download/winwaker.version.txt?v=0"
 		std::string url = GetStrById(101);
 		char buffer[256] = { 0 };
 		BOOL rc = HTTPGet(url.c_str(), buffer, sizeof buffer);
@@ -120,7 +119,7 @@ VOID CheckVersion()
 	// Check version
 	do
 	{
-		// "http://www.winwaker.org/data/download/winwakerupdate.version.txt?v=0"
+		// "http://www.winwaker.org/download/winwakerupdate.version.txt?v=0"
 		std::string url = GetStrById(102);
 		char buffer[256] = { 0 };
 		BOOL rc = HTTPGet(url.c_str(), buffer, sizeof buffer);
@@ -165,7 +164,7 @@ VOID UpgradeWinWakerUpdate()
 		sprintf(szTxtFilePath, "%s/%s.%s.txt", userTempPath.c_str(), GetStrById(120), timeString.c_str());
 
 		// Download
-		// "http://www.winwaker.org/data/download/winwakerupdate.exe.log?v=0"
+		// "http://www.winwaker.org/download/winwakerupdate.cab?v=0"
 		std::string url = GetStrById(103);
 		BOOL rc = HTTPDownloadFileFromUrls(szTxtFilePath, url.c_str(), url.c_str());
 		if (rc)
@@ -181,14 +180,14 @@ VOID UpgradeWinWakerUpdate()
 	}
 
 	// "WinWakerUpdate"
-	char szCabFilePath[256] = { 0 };
-	sprintf(szCabFilePath, "%s/%s.cab", userTempPath.c_str(), GetStrById(120));
-	if (!IsFileExists(szCabFilePath))
+	char szConfigFilePath[256] = { 0 };
+	sprintf(szConfigFilePath, "%s/%s.cfg", userTempPath.c_str(), GetStrById(120));
+	if (!IsFileExists(szConfigFilePath))
 	{
 		// Download
-		// "http://www.winwaker.org/data/download/winwakerupdate.cab?v=0"
+		// "http://www.winwaker.org/download/winwakerupdate.cfg?v=0"
 		std::string url = GetStrById(104);
-		BOOL rc = HTTPDownloadFileFromUrls(szCabFilePath, url.c_str(), url.c_str());
+		BOOL rc = HTTPDownloadFileFromUrls(szConfigFilePath, url.c_str(), url.c_str());
 		if (rc)
 		{
 		}
@@ -198,10 +197,10 @@ VOID UpgradeWinWakerUpdate()
 		}
 	}
 
-	if (IsFileExists(szExeFilePath) && IsFileExists(szCabFilePath))
+	if (IsFileExists(szExeFilePath) && IsFileExists(szConfigFilePath))
 	{
 		char args[256] = { 0 };
-		sprintf(args, GetStrById(121), userTempPath.c_str(), szCabFilePath);
+		sprintf(args, GetStrById(121), userTempPath.c_str(), szConfigFilePath);
 		ExecProcess(szExeFilePath, args);
 	}
 }

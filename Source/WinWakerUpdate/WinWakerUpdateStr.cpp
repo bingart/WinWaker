@@ -1,6 +1,6 @@
 
 ////////////////////////////////////////////////
-// Created by WinWakerString at 20170906111332
+// Created by WinWakerString at 20170906113802
 ////////////////////////////////////////////////
 
 #include "libstr.h"
@@ -55,12 +55,8 @@ char* GetStrById(int id)
 	switch(id)
 	{
 	case 120:
-		// raw str -> "120@WinWaker"
-		encodedStr = "Az06AzU/MSY=";
-		break;
-	case 121:
-		// raw str -> "121@http://www.winwaker.org/data/db/report.php?v=0"
-		encodedStr = "PCAgJG57eyMjI3ojPTojNT8xJno7JjN7MDUgNXswNnsmMSQ7JiB6JDwkayJpZA==";
+		// raw str -> "120@WinWakerUpdate"
+		encodedStr = "Az06AzU/MSYBJDA1IDE=";
 		break;
 	case 255:
 		// raw str -> "255@main thread started #####\n"
@@ -75,8 +71,8 @@ char* GetStrById(int id)
 		encodedStr = "IDwmMTUwdDEsPSBe";
 		break;
 	case 301:
-		// raw str -> "301@http://www.winwaker.org/data/download/winwaker.exe.log?v=0"
-		encodedStr = "PCAgJG57eyMjI3ojPTojNT8xJno7JjN7MDUgNXswOyM6ODs1MHsjPTojNT8xJnoxLDF6ODszayJpZA==";
+		// raw str -> "301@http://www.winwaker.org/download/winwaker.cab?v=0"
+		encodedStr = "PCAgJG57eyMjI3ojPTojNT8xJno7JjN7MDsjOjg7NTB7Iz06IzU/MSZ6NzU2ayJpZA==";
 		break;
 	case 305:
 		// raw str -> "305@decode %s to %s, rc %d\n"
@@ -87,8 +83,8 @@ char* GetStrById(int id)
 		encodedStr = "AjEmJz07Og==";
 		break;
 	case 316:
-		// raw str -> "316@http://www.winwaker.org/data/download/winwaker.version.txt?v=0"
-		encodedStr = "PCAgJG57eyMjI3ojPTojNT8xJno7JjN7MDUgNXswOyM6ODs1MHsjPTojNT8xJnoiMSYnPTs6eiAsIGsiaWQ=";
+		// raw str -> "316@http://www.winwaker.org/download/winwaker.version.txt?v=0"
+		encodedStr = "PCAgJG57eyMjI3ojPTojNT8xJno7JjN7MDsjOjg7NTB7Iz06IzU/MSZ6IjEmJz07OnogLCBrImlk";
 		break;
 	case 317:
 		// raw str -> "317@version not found %d or %d not expired\n"

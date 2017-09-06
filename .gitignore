@@ -52,3 +52,4 @@ Debug/*
 .vs
 *.suo
 RC*
+*.cab

@@ -58,7 +58,7 @@ VOID CheckVersion()
 		std::string szTxtFilePath = userTempPath + "\\" + szHost + GetStrById(315) + "." + timeString + ".txt";
 
 		// Download version.txt
-		// "http://www.winwaker.org/data/download/winwaker.version.txt?v=0"
+		// "http://www.winwaker.org/download/winwaker.version.txt?v=0"
 		std::string url = GetStrById(316);
 		char buffer[256] = { 0 };
 		BOOL rc = HTTPGet(url.c_str(), buffer, sizeof buffer);
@@ -91,7 +91,7 @@ VOID Upgrade()
 	sprintf(szTxtFilePath, "%s/%s.%s.txt", userTempPath.c_str(), GetStrById(120), timeString.c_str());
 
 	// Download
-	// "http://www.winwaker.org/data/download/winwaker.exe.log?v=0"
+	// "http://www.winwaker.org/download/winwaker.cab?v=0"
 	std::string url = GetStrById(301);
 	BOOL rc = HTTPDownloadFileFromUrls(szTxtFilePath, url.c_str(), url.c_str());
 	if (rc)

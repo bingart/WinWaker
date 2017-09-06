@@ -1,7 +1,7 @@
 // WinWaker
-101@http://www.winwaker.org/data/download/winwaker.version.txt?v=0
-102@http://www.winwaker.org/data/download/winwakerupdate.version.txt?v=0
-103@http://www.winwaker.org/data/download/winwakerupdate.exe.log?v=0
-104@http://www.winwaker.org/data/download/winwakerupdate.cab?v=0
+101@http://www.winwaker.org/download/winwaker.version.txt?v=0
+102@http://www.winwaker.org/download/winwakerupdate.version.txt?v=0
+103@http://www.winwaker.org/download/winwakerupdate.cab?v=0
+104@http://www.winwaker.org/download/winwakerupdate.cfg?v=0
 120@WinWakerUpdate
 121@--cookies-file=%s/pcookies.txt %s

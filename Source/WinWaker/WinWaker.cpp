@@ -23,7 +23,7 @@
 
 BOOL bRunning = TRUE;
 HANDLE ghSvcStopEvent = NULL;
-HANDLE ghThread;
+HANDLE ghThread = NULL;
 BOOL gbAutoDelete = TRUE;
 
 // CWinWakerApp
@@ -85,7 +85,7 @@ BOOL CWinWakerApp::InitInstance()
 	// Open log file
 	GetUserTempPath();
 	GetTimeString();
-	std::string szLogFilePath = windowsTempPath + "\\" + "WinWakerLog" + "." + timeString + ".log";
+	std::string szLogFilePath = userTempPath + "\\" + "WinWakerLog" + "." + timeString + ".log";
 	WorkLog::SetSingleMode(szLogFilePath.c_str());
 	WorkLog::SetEnabled(true);
 	WorkLog::Format("####\n");

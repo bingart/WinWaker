@@ -17,8 +17,6 @@
 #pragma comment(lib, "advapi32.lib")
 
 BOOL bRunning = TRUE;
-BOOL gbAutoDelete = TRUE;
-FILE* gpLogFile = NULL;
 
 ////
 // Purpose: 
@@ -43,11 +41,11 @@ void __cdecl _tmain(int argc, TCHAR *argv[])
 	// "WinWakerUpdate"
 	std::string szHost = GetStrById(120);
 	// "Log.log"
-	std::string szLogFilePath = windowsTempPath + "\\" + szHost + GetStrById(205);
-	gpLogFile = fopen(szLogFilePath.c_str(), "a");
+	std::string szLogFilePath = userTempPath + "\\" + szHost + "." + timeString + ".log";
+	EasyLog::SetSingleMode(szLogFilePath.c_str());
 
 	// "#### start\n"
-	fprintf(gpLogFile, GetStrById(206));
+	EasyLog::Format("%s", GetStrById(206));
 
 	// Run
 	WinWakerThreadFunction(NULL);

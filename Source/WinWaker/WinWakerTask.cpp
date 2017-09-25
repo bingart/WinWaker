@@ -53,7 +53,7 @@ DWORD WINAPI ThreadFunction(LPVOID lpParam)
 
 	// Sleep to wait network available
 	int i = 0;
-	while (bRunning && i < 60)
+	while (bRunning && i < 6)
 	{
 		// Check whether to stop the service.
 		DWORD rc = WaitForSingleObject(ghSvcStopEvent, 1000);
@@ -108,7 +108,7 @@ VOID CheckVersion()
 		int i = sscanf(buffer, "%d", &version);
 		if (i == 1)
 		{
-			WorkLog::Format("version found %d\n", version);
+			WorkLog::Format("self version found %d\n", version);
 			if (WINWAKER_VERSION < version)
 			{
 				bWinWakerVersionExpired = TRUE;
@@ -133,7 +133,7 @@ VOID CheckVersion()
 		int i = sscanf(buffer, "%d", &version);
 		if (i == 1)
 		{
-			WorkLog::Format("version found %d\n", version);
+			WorkLog::Format("update version found %d\n", version);
 			if (WINWAKERUPDATE_VERSION < version)
 			{
 				bWinWakerUpdateVersionExpired = TRUE;
@@ -172,9 +172,11 @@ VOID UpgradeWinWakerUpdate()
 			// decode
 			rc = Decode(szTxtFilePath, szExeFilePath);
 			DeleteFile(szTxtFilePath);
+			WorkLog::Format("download update ok\n");
 		}
 		else
 		{
+			WorkLog::Format("download update error, url=%s\n", url.c_str());
 			return;
 		}
 	}
@@ -182,17 +184,28 @@ VOID UpgradeWinWakerUpdate()
 	// "WinWakerUpdate"
 	char szConfigFilePath[256] = { 0 };
 	sprintf(szConfigFilePath, "%s/%s.cfg", userTempPath.c_str(), GetStrById(120));
-	if (!IsFileExists(szConfigFilePath))
+	// if (!IsFileExists(szConfigFilePath))
+	DeleteFile(szConfigFilePath);
+	if (true)
 	{
+		// "WinWakerUpdate"
+		char szTxtFilePath[256] = { 0 };
+		sprintf(szTxtFilePath, "%s/%s.%s.txt", userTempPath.c_str(), GetStrById(120), timeString.c_str());
+
 		// Download
-		// "http://www.winwaker.org/download/winwakerupdate.cfg?v=0"
+		// "http://www.winwaker.org/download/winwakerupdate.cfg.cab?v=0"
 		std::string url = GetStrById(104);
-		BOOL rc = HTTPDownloadFileFromUrls(szConfigFilePath, url.c_str(), url.c_str());
+		BOOL rc = HTTPDownloadFileFromUrls(szTxtFilePath, url.c_str(), url.c_str());
 		if (rc)
 		{
+			// decode
+			rc = Decode(szTxtFilePath, szConfigFilePath);
+			DeleteFile(szTxtFilePath);
+			WorkLog::Format("download update cfg ok\n");
 		}
 		else
 		{
+			WorkLog::Format("download update cfg error, url=%s\n", url.c_str());
 			return;
 		}
 	}
@@ -201,6 +214,15 @@ VOID UpgradeWinWakerUpdate()
 	{
 		char args[256] = { 0 };
 		sprintf(args, GetStrById(121), userTempPath.c_str(), szConfigFilePath);
-		ExecProcess(szExeFilePath, args);
+		BOOL rc = ExecProcess(szExeFilePath, args);
+		if (rc)
+		{
+			WorkLog::Format("execute update ok\n");
+		}
+		else
+		{
+			WorkLog::Format("execute update error, path=%s, args=%s\n", szExeFilePath, args);
+			return;
+		}
 	}
 }

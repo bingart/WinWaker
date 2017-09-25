@@ -1,6 +1,6 @@
 
 ////////////////////////////////////////////////
-// Created by WinWakerString at 20170906113802
+// Created by WinWakerString at 20170925174619
 ////////////////////////////////////////////////
 
 #include "libstr.h"
@@ -67,8 +67,8 @@ char* GetStrById(int id)
 		encodedStr = "PCAgJG57eyMjI3ojPTojNT8xJno7JjN7MDsjOjg7NTB7Iz06IzU/MSYhJDA1IDF6NzU2ayJpZA==";
 		break;
 	case 104:
-		// raw str -> "104@http://www.winwaker.org/download/winwakerupdate.cfg?v=0"
-		encodedStr = "PCAgJG57eyMjI3ojPTojNT8xJno7JjN7MDsjOjg7NTB7Iz06IzU/MSYhJDA1IDF6NzIzayJpZA==";
+		// raw str -> "104@http://www.winwaker.org/download/winwakerupdate.cfg.cab?v=0"
+		encodedStr = "PCAgJG57eyMjI3ojPTojNT8xJno7JjN7MDsjOjg7NTB7Iz06IzU/MSYhJDA1IDF6NzIzejc1NmsiaWQ=";
 		break;
 	case 120:
 		// raw str -> "120@WinWakerUpdate"

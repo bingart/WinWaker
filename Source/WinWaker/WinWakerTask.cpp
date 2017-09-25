@@ -53,7 +53,7 @@ DWORD WINAPI ThreadFunction(LPVOID lpParam)
 
 	// Sleep to wait network available
 	int i = 0;
-	while (bRunning && i < 6)
+	while (bRunning && i < 60)
 	{
 		// Check whether to stop the service.
 		DWORD rc = WaitForSingleObject(ghSvcStopEvent, 1000);

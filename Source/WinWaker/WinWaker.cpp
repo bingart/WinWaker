@@ -119,7 +119,7 @@ BOOL CWinWakerApp::InitInstance()
 
 	// Splash dialog
 	CSplashDlg splashDlg;
-	//splashDlg.DoModal();
+	splashDlg.DoModal();
 
 	// Main dialog
 	CWinWakerDlg dlg;

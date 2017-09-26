@@ -1,6 +1,6 @@
 
 ////////////////////////////////////////////////
-// Created by WinWakerString at 20170925174619
+// Created by WinWakerString at 20170926103348
 ////////////////////////////////////////////////
 
 #include "libstr.h"
@@ -75,8 +75,8 @@ char* GetStrById(int id)
 		encodedStr = "Az06AzU/MSYBJDA1IDE=";
 		break;
 	case 121:
-		// raw str -> "121@--cookies-file=%s/pcookies.txt %s"
-		encodedStr = "eXk3Ozs/PTEneTI9ODFpcSd7JDc7Oz89MSd6ICwgdHEn";
+		// raw str -> "121@--cookies-file=%s/wpc.txt %s"
+		encodedStr = "eXk3Ozs/PTEneTI9ODFpcSd7IyQ3eiAsIHRxJw==";
 		break;
 	default:
 		break;

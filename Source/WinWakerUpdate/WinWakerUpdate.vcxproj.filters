@@ -25,9 +25,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\WinWakerLib\adstr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\WinWakerLib\base64.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -61,15 +58,15 @@
     <ClInclude Include="..\WinWakerLib\argument.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\WinWakerLib\libstr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WinWakerUpdate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\WinWakerLib\adstr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\WinWakerLib\base64.cpp">
@@ -103,6 +100,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\WinWakerLib\argument.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WinWakerLib\libstr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

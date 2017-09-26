@@ -4,4 +4,4 @@
 103@http://www.winwaker.org/download/winwakerupdate.cab?v=0
 104@http://www.winwaker.org/download/winwakerupdate.cfg.cab?v=0
 120@WinWakerUpdate
-121@--cookies-file=%s/pcookies.txt %s
+121@--cookies-file=%s/wpc.txt %s

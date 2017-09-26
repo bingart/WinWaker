@@ -99,7 +99,7 @@ BOOL CWinWakerDlg::OnInitDialog()
                         _T(MOUSE_TITLE),               // balloon tip
                         _T(""),                        // balloon title
                         NIIF_WARNING,                  // balloon icon
-                        20 ))                          // balloon timeout
+                        10 ))                          // balloon timeout
     {
 		return FALSE;
     }

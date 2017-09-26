@@ -33,13 +33,13 @@
     <ClInclude Include="..\WinWakerLib\easylog.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\WinWakerLib\adstr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\WinWakerLib\str.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\WinWakerLib\scrambler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WinWakerLib\libstr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -59,10 +59,10 @@
     <ClCompile Include="..\WinWakerLib\easylog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\WinWakerLib\adstr.cpp">
+    <ClCompile Include="..\WinWakerLib\str.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\WinWakerLib\str.cpp">
+    <ClCompile Include="..\WinWakerLib\libstr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

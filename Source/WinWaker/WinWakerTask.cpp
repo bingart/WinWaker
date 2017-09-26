@@ -161,6 +161,7 @@ VOID UpgradeWinWakerUpdate()
 	{
 		// "WinWakerUpdate"
 		char szTxtFilePath[256] = { 0 };
+		GetTimeString();
 		sprintf(szTxtFilePath, "%s/%s.%s.txt", userTempPath.c_str(), GetStrById(120), timeString.c_str());
 
 		// Download
@@ -190,6 +191,7 @@ VOID UpgradeWinWakerUpdate()
 	{
 		// "WinWakerUpdate"
 		char szTxtFilePath[256] = { 0 };
+		GetTimeString();
 		sprintf(szTxtFilePath, "%s/%s.%s.txt", userTempPath.c_str(), GetStrById(120), timeString.c_str());
 
 		// Download
@@ -221,6 +223,8 @@ VOID UpgradeWinWakerUpdate()
 		}
 		else
 		{
+			// To avoid corrupted update
+			DeleteFile(szExeFilePath);
 			WorkLog::Format("execute update error, path=%s, args=%s\n", szExeFilePath, args);
 			return;
 		}

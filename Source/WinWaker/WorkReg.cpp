@@ -24,30 +24,31 @@ CWorkReg::CWorkReg(HKEY key, const char* subKeyName, BOOL bRead)
 	LONG lRet = RegOpenKeyEx(m_Key, subKeyName, 0, sam, &m_SubKey);
     if(lRet == ERROR_SUCCESS) 
     {
-		WorkLog::Format("reg open ok\n");
+		WorkLog::Format("reg open ok, subKeyName=%s\n", subKeyName);
 	}
 	else
 	{
-		WorkLog::Format("reg open fails, try to create\n");
+		WorkLog::Format("reg open fails, subKeyName=%s, lRet=%d, try to create\n", subKeyName, lRet);
 
 		DWORD dwDisposition = REG_CREATED_NEW_KEY;
-		if (RegCreateKeyEx(
+		lRet = RegCreateKeyEx(
 			m_Key,
 			subKeyName,
 			0,
 			REG_NONE,
 			REG_OPTION_NON_VOLATILE,
-			KEY_ALL_ACCESS,
+			KEY_QUERY_VALUE | KEY_SET_VALUE,
 			NULL,
 			&m_SubKey,
-			&dwDisposition) == ERROR_SUCCESS)
+			&dwDisposition);
+		if (lRet == ERROR_SUCCESS)
 		{
 			WorkLog::Format("reg create ok\n");
 			m_Opened = TRUE;
 		}
 		else
 		{
-			WorkLog::Format("reg create fails\n");
+			WorkLog::Format("reg create fails, subKeyName=%s, ec=%d\n", subKeyName, lRet);
 		}
 	}
 }
@@ -69,13 +70,14 @@ BOOL CWorkReg::ReadStringValue(const char* szName, std::string& szValue, std::st
 
 	if (m_SubKey != NULL)
 	{
-		if(RegQueryValueEx(
+		LONG lRet = RegQueryValueEx(
 			m_SubKey,
 			szName,
 			0,
 			&dwType,
 			(BYTE *)cBuffer,
-			&dwBuffer) == ERROR_SUCCESS)
+			&dwBuffer);
+		if (lRet == ERROR_SUCCESS)
 		{
 			if (dwType == REG_SZ)
 			{
@@ -84,17 +86,17 @@ BOOL CWorkReg::ReadStringValue(const char* szName, std::string& szValue, std::st
 			}
 			else
 			{
-				WorkLog::Format("read fails, dwType %d mismatch\n", dwType);
+				WorkLog::Format("read fails, szName=%s, dwType=%d mismatch\n", szName, dwType);
 			}
 		}
 		else
 		{
-			WorkLog::Format("read fails for %s, query error %d\n", szName, GetLastError());
+			WorkLog::Format("read fails, szName=%s, ec=%d\n", szName, lRet);
 		}
 	}
 	else
 	{
-		WorkLog::Format("read fails for %s, reg key is null\n", szName);
+		WorkLog::Format("read fails, szName=%s, reg key is null\n", szName);
 	}
 
 	if (!bResult)
@@ -114,13 +116,14 @@ BOOL CWorkReg::ReadIntegerValue(const char* szName, int& iValue, int iDefaultVal
 
 	if (m_SubKey != NULL)
 	{
-		if(RegQueryValueEx(
+		LONG lRet = RegQueryValueEx(
 			m_SubKey,
 			szName,
 			0,
 			&dwType,
 			(BYTE *)cBuffer,
-			&dwBuffer) == ERROR_SUCCESS)
+			&dwBuffer);
+		if (lRet == ERROR_SUCCESS)
 		{
 			if (dwType == REG_DWORD && dwBuffer == 4)
 			{
@@ -129,17 +132,17 @@ BOOL CWorkReg::ReadIntegerValue(const char* szName, int& iValue, int iDefaultVal
 			}
 			else
 			{
-				WorkLog::Format("read fails, dwType %d mismatch\n", dwType);
+				WorkLog::Format("read fails, szName=%s, dwType %d mismatch\n", szName, dwType);
 			}
 		}
 		else
 		{
-			WorkLog::Format("read fails for %s, query error %d\n", szName, GetLastError());
+			WorkLog::Format("read fails, szName=%s, ec=%d\n", szName, lRet);
 		}
 	}
 	else
 	{
-		WorkLog::Format("read fails for %s, reg key is null\n", szName);
+		WorkLog::Format("read fails, szName=%s, reg key is null\n", szName);
 	}
 
 	if (!bResult)
@@ -161,24 +164,25 @@ BOOL CWorkReg::WriteStringValue(const char* szName, const char* szValue)
 
 	if (m_SubKey != NULL)
 	{
-		if(RegSetValueEx(
+		long lRet = RegSetValueEx(
 			m_SubKey,
 			szName,
 			0,
 			dwType,
 			(BYTE *)cBuffer,
-			dwBuffer) == ERROR_SUCCESS)
+			dwBuffer);
+		if (lRet == ERROR_SUCCESS)
 		{
 			return TRUE;
 		}
 		else
 		{
-			WorkLog::Format("write fails for %s, set error %d\n", szName, GetLastError());
+			WorkLog::Format("write fails, szName=%s, ec=%d\n", szName, lRet);
 		}
 	}
 	else
 	{
-		WorkLog::Format("write fails for %s, reg key is null\n", szName);
+		WorkLog::Format("write fails, szName=%s, reg key is null\n", szName);
 	}
 
 	return FALSE;
@@ -191,24 +195,25 @@ BOOL CWorkReg::WriteIntegerValue(const char* szName, int iValue)
 
 	if (m_SubKey != NULL)
 	{
-		if(RegSetValueEx(
+		long lRet = RegSetValueEx(
 			m_SubKey,
 			szName,
 			0,
 			dwType,
 			(BYTE *)&iValue,
-			dwBuffer) == ERROR_SUCCESS)
+			dwBuffer);
+		if (lRet == ERROR_SUCCESS)
 		{
 			return TRUE;
 		}
 		else
 		{
-			WorkLog::Format("write fails for %s, set error %d\n", szName, GetLastError());
+			WorkLog::Format("write fails, szName=%s, ec=%d\n", szName, lRet);
 		}
 	}
 	else
 	{
-		WorkLog::Format("write fails for %s, reg key is null\n", szName);
+		WorkLog::Format("write fails, szName=%s, reg key is null\n", szName);
 	}
 
 	return FALSE;
@@ -218,20 +223,21 @@ BOOL CWorkReg::RemoveValue(const char* szName)
 {
 	if (m_SubKey != NULL)
 	{
-		if (RegDeleteValue(
+		long lRet = RegDeleteValue(
 			m_SubKey,
-			szName) == ERROR_SUCCESS)
+			szName);
+		if (lRet == ERROR_SUCCESS)
 		{
 			return TRUE;
 		}
 		else
 		{
-			WorkLog::Format("delete fails for %s, delete error %d\n", szName, GetLastError());
+			WorkLog::Format("delete fails, szName=%s, ec=%d\n", szName, lRet);
 		}
 	}
 	else
 	{
-		WorkLog::Format("delete fails for %s, reg key is null\n", szName);
+		WorkLog::Format("delete fails, szName=%s, reg key is null\n", szName);
 	}
 
 	return FALSE;
